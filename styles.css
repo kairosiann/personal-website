@@ -140,24 +140,8 @@ hr {
   margin: 28px 0 16px;
 }
 
-.blog-intro {
+.section-intro {
   font-size: 14px;
   color: #444;
   margin-bottom: 20px;
-}
-
-/* Fun */
-.fun-section {
-  margin-bottom: 20px;
-}
-
-.fun-section h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.fun-section p {
-  font-size: 14px;
-  color: #444;
 }
