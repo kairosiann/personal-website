@@ -1,4 +1,4 @@
-# Ryan Hwang Kim
+# Ryan H. Kim
 
 > Undergraduate student at Yale University studying Computer Science, Mathematics, and Global Affairs. AI researcher, co-president of AttentionX (Korea's leading AI research group and startup accelerator), and currently serving as a Military Police Sergeant (KATUSA, 31B) with the US Eighth Army at USAG Humphreys, South Korea.
 
@@ -18,7 +18,7 @@ Ryan Hwang Kim is a driven, creative, and analytical thinker deeply interested i
 ## Experience
 
 - **Stealth — Founder** (Apr 2026 – present): building at the intersection of AI and humanity.
-- **[AttentionX](https://www.attentionx.org) — Co-President** (Jan 2025 – present): Korea's leading AI research group and startup accelerator.
+- **[AttentionX](https://www.attentionx.org) — Co-President** (Jan 2025 – Jun 2026): Korea's leading AI research group and startup accelerator.
 - **United States Eighth Army — Military Police Sergeant** (Oct 2024 – Apr 2026): KATUSA MP (31B) with HHC, USAG Humphreys. Recipient of the Army Commendation Medal.
 - **[KAIST CLVR Lab](https://clvrai.com) — Part-time Undergraduate Research Intern** (Dec 2024 – Mar 2025): Reinforcement learning and robot learning research with Prof. Joseph Lim.
 - **[Center for AI Safety](https://www.safe.ai) — Research Engineer Intern** (May 2024 – Jul 2024): Co-authored *Humanity's Last Exam* (Nature) and *Safetywashing* (NeurIPS 2024).
@@ -27,11 +27,13 @@ Ryan Hwang Kim is a driven, creative, and analytical thinker deeply interested i
 ## Publications
 
 - [Humanity's Last Exam](https://www.nature.com/articles/s41586-025-09962-4) — *Nature*, 2026. Long Phan, Alice Gatti, Ziwei Han, … Ryan H. Kim, … et al.
-- Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress? — *NeurIPS 2024*. Richard Ren, Steven Basart, … Ryan H. Kim, … et al.
+- [Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress?](https://proceedings.neurips.cc/paper_files/paper/2024/hash/7ebcdd0de471c027e67a11959c666d74-Abstract-Datasets_and_Benchmarks_Track.html) — *NeurIPS 2024*. Richard Ren, Steven Basart, … Ryan H. Kim, … et al.
 
 ## Projects
 
-- **Ongoing projects** (Dec 2024 – present): Details forthcoming.
+- **Ongoing projects** (Apr 2026 – present): Details forthcoming.
+- **Charis** (May 2026 – present): coming soon.
+- **[Athenaeum](athenaeum.ryanhwangkim.com)** (Jun 2026 – present): A walkable library of the inputs I choose to shape my mind.
 - **Alfred Lawbot** (May 2024 – Jul 2024): Generative AI chatbot for legal document analysis w. Yale Law School.
 - **State of Wealth (Citadel Spring Invitational Datathon)** (Apr 2024): Developed OLS regression models and numerous statistical tests to model how WTI crude prices and oil production drive state-level income growth.
 - **Novel Traffic Control AIoT System** (Jul 2021 – Feb 2022): AIoT system using deep learning for real-time traffic optimization. Regeneron Science Talent Search Scholar, 2023.
