@@ -9,6 +9,8 @@ html {
 }
 
 body {
+  --link-arrow: #000;
+  --link-arrow-hover: #444;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   line-height: 1.6;
@@ -40,6 +42,44 @@ header p {
 header a {
   color: #000;
   text-decoration: underline;
+}
+
+/* A quiet outbound-link cue: monochrome at rest and directional on interaction. */
+.outbound-link::after {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-left: 0.24em;
+  position: relative;
+  top: 0.04em;
+  vertical-align: super;
+  background-color: var(--link-arrow);
+  -webkit-mask: url("arrow-up-right.svg") center / contain no-repeat;
+  mask: url("arrow-up-right.svg") center / contain no-repeat;
+  text-decoration: none;
+  transform: translate(0, 0);
+  transition-property: background-color, transform;
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.outbound-link:hover::after,
+.outbound-link:focus-visible::after {
+  background-color: var(--link-arrow-hover);
+  transform: translate(1px, -1px);
+}
+
+.outbound-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--link-arrow-hover) 38%, transparent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outbound-link::after {
+    transition-duration: 0ms;
+  }
 }
 
 /* Navigation */
