@@ -1,0 +1,50 @@
+# Ryan Hwang Kim
+
+> Undergraduate student at Yale University studying Computer Science, Mathematics, and Global Affairs. AI researcher, co-president of AttentionX (Korea's leading AI research group and startup accelerator), and currently serving as a Military Police Sergeant (KATUSA, 31B) with the US Eighth Army at USAG Humphreys, South Korea.
+
+Ryan Hwang Kim is a driven, creative, and analytical thinker deeply interested in AI and emerging technologies — both the technical frontier and the societal and business implications. He has co-authored research appearing in *Nature* and at NeurIPS 2024, and has worked at the Center for AI Safety, KAIST CLVR Lab, and as a Global Youth Advisor for Google & Canvas8.
+
+## Contact
+
+- Email: ryan.h.kim@yale.edu
+- Website: https://ryanhwangkim.com
+
+## Education
+
+- [Yale University](https://www.yale.edu) (Sep 2023 – present): B.S. Computer Science + Mathematics, B.A. Global Affairs. On leave from Fall 2024 through Spring 2026; returning as a sophomore in Fall 2026.
+- [Choate Rosemary Hall](https://www.choate.edu) (Sep 2019 – May 2023): High School Diploma.
+- [Dulwich College Seoul](https://www.dulwich-seoul.kr) (Sep 2010 – May 2019): Elementary and Middle School.
+
+## Experience
+
+- **Stealth — Founder** (Apr 2026 – present): building at the intersection of AI and humanity.
+- **[AttentionX](https://www.attentionx.org) — Co-President** (Jan 2025 – present): Korea's leading AI research group and startup accelerator.
+- **United States Eighth Army — Military Police Sergeant** (Oct 2024 – Apr 2026): KATUSA MP (31B) with HHC, USAG Humphreys. Recipient of the Army Commendation Medal.
+- **[KAIST CLVR Lab](https://clvrai.com) — Part-time Undergraduate Research Intern** (Dec 2024 – Mar 2025): Reinforcement learning and robot learning research with Prof. Joseph Lim.
+- **[Center for AI Safety](https://www.safe.ai) — Research Engineer Intern** (May 2024 – Jul 2024): Co-authored *Humanity's Last Exam* (Nature) and *Safetywashing* (NeurIPS 2024).
+- **Google & Canvas8 — Global Youth Advisor** (Feb 2024 – present): Pre-release beta testing and ideation for AI-powered products.
+
+## Publications
+
+- [Humanity's Last Exam](https://www.nature.com/articles/s41586-025-09962-4) — *Nature*, 2026. Long Phan, Alice Gatti, Ziwei Han, … Ryan H. Kim, … et al.
+- Safetywashing: Do AI Safety Benchmarks Actually Measure Safety Progress? — *NeurIPS 2024*. Richard Ren, Steven Basart, … Ryan H. Kim, … et al.
+
+## Projects
+
+- **Ongoing projects** (Dec 2024 – present): Details forthcoming.
+- **Alfred Lawbot** (May 2024 – Jul 2024): Generative AI chatbot for legal document analysis w. Yale Law School.
+- **State of Wealth (Citadel Spring Invitational Datathon)** (Apr 2024): Developed OLS regression models and numerous statistical tests to model how WTI crude prices and oil production drive state-level income growth.
+- **Novel Traffic Control AIoT System** (Jul 2021 – Feb 2022): AIoT system using deep learning for real-time traffic optimization. Regeneron Science Talent Search Scholar, 2023.
+- **Covid-19 Robot** (Jun 2020 – Feb 2021): Autonomous mobile robot with manipulator, chatbot, and temperature scanner. Samsung HumanTech Silver Award, 2021.
+
+## Writing
+
+- [The Era of Human Experience](https://substack.com/home/post/p-191660809) (Mar 2026): Brief thoughts on the impact of AGI on the future human experience.
+- [print("Hello world")](https://substack.com/@kairosiann/p-164210712) (May 2025): Introductory blog post.
+
+## Interests
+
+- **Reading**: [Goodreads profile](https://www.goodreads.com/user/show/90382592-ryan).
+- **Sports**: Avid golfer, skier, and squash player. Occasional runner, soccer player, and gym-goer.
+- **Music**: Former cellist; performed at the Kennedy Center in Washington, DC.
+- **Volunteer work**: Plans alumni socials for Choate Rosemary Hall and Dulwich International in Seoul.
