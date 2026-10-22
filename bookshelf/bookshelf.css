@@ -8,31 +8,65 @@
   margin-top: 8px;
 }
 
-/* Books sit on a 2px rule, the same weight as the page's divider; when a shelf
-   wraps onto a second row, each row gets its own rule. */
+/* One row per shelf: the standing books in a strip on the left and the pile on
+   the right, both on a 2px rule the same weight as the page's divider. */
+.shelf-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+
+/* The standing books. When they don't all fit, bookshelf.js pins the shelf and
+   slides this strip sideways as the page scrolls, the way the homepage steps
+   through its sections, fading whichever edge has more books past it. */
+.shelf-scroll {
+  --fade-left: 0px;
+  --fade-right: 0px;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent);
+}
+
+.shelf-scroll.has-before {
+  --fade-left: 28px;
+}
+
+.shelf-scroll.has-after {
+  --fade-right: 40px;
+}
+
 .shelf-books {
-  --row: 250px;
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
   align-items: flex-end;
-  column-gap: 3px;
-  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--row) - 2px), var(--ink) calc(var(--row) - 2px) var(--row));
+  gap: 3px;
+  width: max-content;
+  height: 256px; /* the tallest spine, plus room to lift on hover */
 }
 
 .shelf-books > li {
   display: flex;
   align-items: flex-end;
-  height: var(--row);
-  padding-bottom: 2px;
+}
+
+.shelf.is-scrolling .shelf-pin {
+  position: sticky;
+  top: var(--stick, 16px);
+}
+
+.shelf.is-scrolling .shelf-books {
+  will-change: transform;
 }
 
 .spine {
   writing-mode: vertical-rl;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   width: var(--w, 30px);
   height: var(--h, 170px);
   padding: 10px 0 8px;
@@ -88,8 +122,19 @@ a.flat:focus-visible {
   background: var(--ink);
 }
 
+/* A thin bar between title and author */
+.spine-sep,
+.flat-sep {
+  flex: none;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+}
+
 .spine--ink .spine-author,
-.flat--ink .flat-author {
+.spine--ink .spine-sep,
+.flat--ink .flat-author,
+.flat--ink .flat-sep {
   color: #aaa;
 }
 
@@ -102,19 +147,12 @@ a.flat:focus-visible {
     #fff;
 }
 
-/* Currently reading: a small pile lying flat at the end of the shelf. It takes whatever
-   room the standing books leave, so on a phone it narrows instead of wrapping. */
-.stack-slot {
-  flex: 1 0 150px;
-  min-width: 0;
-  justify-content: flex-end;
-}
-
-.stack-slot > .stack {
-  width: 100%;
-}
-
+/* Currently reading: a small pile lying flat at the end of the shelf, as wide as
+   its widest book (--pile); on a phone it narrows to leave the standing books room. */
 .stack {
+  flex: 0 1 var(--pile, 200px);
+  min-width: 0;
+  max-width: 48%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -132,8 +170,8 @@ a.flat:focus-visible {
 .flat {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 7px;
   width: min(var(--w, 200px), 100%);
   height: var(--t, 24px);
   margin-top: -1.5px;
@@ -190,11 +228,21 @@ a.flat:focus-visible {
   color: var(--muted);
 }
 
-/* On a phone, a long count wraps under itself instead of being cut off */
+/* On a phone, a long count wraps under itself instead of being cut off, and the
+   pile drops its authors (tapping a book still names it) to keep titles whole. */
 @media (max-width: 480px) {
   .shelf-note {
     white-space: normal;
     text-align: right;
+  }
+
+  .stack {
+    max-width: 56%;
+  }
+
+  .flat-sep,
+  .flat-author {
+    display: none;
   }
 }
 

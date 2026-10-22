@@ -34,100 +34,127 @@
 
     <main>
       <!-- To add a book: copy a spine <li> onto a shelf. Books I'm reading go in the shelf's "Currently reading" stack as flat <a class="flat"> books.
-           --w is a spine's thickness, --h its height; --t is a flat book's thickness. -->
+           --w is a spine's thickness, --h its height; --t is a flat book's thickness; a stack's --pile is its widest book.
+           A shelf whose books don't fit across pins in place and slides them sideways as you scroll. -->
 
       <section class="shelf" id="fiction" aria-labelledby="fiction-name">
-        <ul class="shelf-books">
-          <li><a class="spine spine--ink" style="--w: 29px; --h: 204px" href="https://www.goodreads.com/search?q=1984+George+Orwell" data-caption="1984 · George Orwell"><span class="spine-title">1984</span><span class="spine-author">Orwell</span></a></li>
-          <li><a class="spine" style="--w: 28px; --h: 190px" href="https://www.goodreads.com/search?q=Brave+New+World+Aldous+Huxley" data-caption="Brave New World · Aldous Huxley"><span class="spine-title">Brave New World</span><span class="spine-author">Huxley</span></a></li>
-          <li><a class="spine spine--band" style="--w: 28px; --h: 216px" href="https://www.goodreads.com/search?q=The+Midnight+Library+Matt+Haig" data-caption="The Midnight Library · Matt Haig"><span class="spine-title">The Midnight Library</span><span class="spine-author">Haig</span></a></li>
-          <li><a class="spine" style="--w: 34px; --h: 198px" href="https://www.goodreads.com/search?q=Pachinko+Min+Jin+Lee" data-caption="Pachinko · Min Jin Lee"><span class="spine-title">Pachinko</span><span class="spine-author">Lee</span></a></li>
-          <li class="stack-slot">
-            <div class="stack">
-              <span class="stack-label">Currently reading</span>
-              <a class="flat" style="--w: 184px; --t: 30px; --x: 0px" href="https://www.goodreads.com/search?q=Atlas+Shrugged+Ayn+Rand" data-caption="Atlas Shrugged · Ayn Rand"><span class="flat-title">Atlas Shrugged</span><span class="flat-author">Rand</span></a>
-              <a class="flat flat--ink" style="--w: 192px; --t: 26px; --x: 6px" href="https://www.goodreads.com/search?q=The+Fountainhead+Ayn+Rand" data-caption="The Fountainhead · Ayn Rand"><span class="flat-title">The Fountainhead</span><span class="flat-author">Rand</span></a>
-              <a class="flat" style="--w: 234px; --t: 23px; --x: -4px" href="https://www.goodreads.com/search?q=The+Three-Body+Problem+Cixin+Liu" data-caption="The Three-Body Problem · Cixin Liu"><span class="flat-title">The Three-Body Problem</span><span class="flat-author">Liu</span></a>
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 29px; --h: 204px" href="https://www.goodreads.com/search?q=1984+George+Orwell" data-caption="1984 · George Orwell"><span class="spine-title">1984</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Orwell</span></a></li>
+                <li><a class="spine" style="--w: 28px; --h: 190px" href="https://www.goodreads.com/search?q=Brave+New+World+Aldous+Huxley" data-caption="Brave New World · Aldous Huxley"><span class="spine-title">Brave New World</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Huxley</span></a></li>
+                <li><a class="spine spine--band" style="--w: 28px; --h: 216px" href="https://www.goodreads.com/search?q=The+Midnight+Library+Matt+Haig" data-caption="The Midnight Library · Matt Haig"><span class="spine-title">The Midnight Library</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Haig</span></a></li>
+                <li><a class="spine" style="--w: 34px; --h: 198px" href="https://www.goodreads.com/search?q=Pachinko+Min+Jin+Lee" data-caption="Pachinko · Min Jin Lee"><span class="spine-title">Pachinko</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Lee</span></a></li>
+              </ul>
             </div>
-          </li>
-        </ul>
-        <div class="shelf-label">
-          <h2 class="shelf-name" id="fiction-name">Fiction</h2>
-          <p class="shelf-note"></p>
+            <div class="stack" style="--pile: 234px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 184px; --t: 30px; --x: 0px" href="https://www.goodreads.com/search?q=Atlas+Shrugged+Ayn+Rand" data-caption="Atlas Shrugged · Ayn Rand"><span class="flat-title">Atlas Shrugged</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Rand</span></a>
+              <a class="flat flat--ink" style="--w: 192px; --t: 26px; --x: 6px" href="https://www.goodreads.com/search?q=The+Fountainhead+Ayn+Rand" data-caption="The Fountainhead · Ayn Rand"><span class="flat-title">The Fountainhead</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Rand</span></a>
+              <a class="flat" style="--w: 234px; --t: 23px; --x: -4px" href="https://www.goodreads.com/search?q=The+Three-Body+Problem+Cixin+Liu" data-caption="The Three-Body Problem · Cixin Liu"><span class="flat-title">The Three-Body Problem</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Liu</span></a>
+              
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="fiction-name">Fiction</h2>
+            <p class="shelf-note"></p>
+          </div>
         </div>
       </section>
 
       <section class="shelf" id="biography-memoir" aria-labelledby="biography-memoir-name">
-        <ul class="shelf-books">
-          <li><a class="spine" style="--w: 38px; --h: 186px" href="https://www.goodreads.com/search?q=Steve+Jobs+Walter+Isaacson" data-caption="Steve Jobs · Walter Isaacson"><span class="spine-title">Steve Jobs</span><span class="spine-author">Isaacson</span></a></li>
-          <li><a class="spine spine--ink" style="--w: 39px; --h: 210px" href="https://www.goodreads.com/search?q=Elon+Musk+Walter+Isaacson" data-caption="Elon Musk · Walter Isaacson"><span class="spine-title">Elon Musk</span><span class="spine-author">Isaacson</span></a></li>
-          <li><a class="spine spine--band" style="--w: 30px; --h: 219px" href="https://www.goodreads.com/search?q=Last+Man+Standing+Jamie+Dimon+Duff+McDonald" data-caption="Last Man Standing · Duff McDonald, on Jamie Dimon"><span class="spine-title">Last Man Standing</span><span class="spine-author">McDonald</span></a></li>
-          <li><a class="spine" style="--w: 29px; --h: 222px" href="https://www.goodreads.com/search?q=Educated+Tara+Westover" data-caption="Educated · Tara Westover"><span class="spine-title">Educated</span><span class="spine-author">Westover</span></a></li>
-          <li><a class="spine" style="--w: 27px; --h: 188px" href="https://www.goodreads.com/search?q=Hillbilly+Elegy+J.D.+Vance" data-caption="Hillbilly Elegy · J.D. Vance"><span class="spine-title">Hillbilly Elegy</span><span class="spine-author">Vance</span></a></li>
-          <li><span class="spine spine--ink" style="--w: 24px; --h: 206px" data-caption="Building Thrive Capital · Invest Like the Best with Patrick O’Shaughnessy (podcast)"><span class="spine-title">Building Thrive Capital</span><span class="spine-author">ILTB</span></span></li>
-          <li><a class="spine spine--band" style="--w: 27px; --h: 214px" href="https://www.goodreads.com/search?q=Meditations+Marcus+Aurelius" data-caption="Meditations · Marcus Aurelius"><span class="spine-title">Meditations</span><span class="spine-author">Aurelius</span></a></li>
-          <li><a class="spine" style="--w: 31px; --h: 210px" href="https://www.goodreads.com/search?q=The+Infinity+Machine+Sebastian+Mallaby" data-caption="The Infinity Machine · Sebastian Mallaby"><span class="spine-title">The Infinity Machine</span><span class="spine-author">Mallaby</span></a></li>
-          <li><a class="spine" style="--w: 27px; --h: 204px" href="https://www.goodreads.com/search?q=Crying+in+H+Mart+Michelle+Zauner" data-caption="Crying in H Mart · Michelle Zauner"><span class="spine-title">Crying in H Mart</span><span class="spine-author">Zauner</span></a></li>
-          <li><a class="spine spine--ink" style="--w: 24px; --h: 190px" href="https://www.goodreads.com/search?q=The+Prince+Niccol%C3%B2+Machiavelli" data-caption="The Prince · Niccolò Machiavelli"><span class="spine-title">The Prince</span><span class="spine-author">Machiavelli</span></a></li>
-          <li class="stack-slot">
-            <div class="stack">
-              <span class="stack-label">Currently reading</span>
-              <a class="flat flat--ink" style="--w: 253px; --t: 25px; --x: 0px" href="https://www.goodreads.com/search?q=Poor+Charlie's+Almanack" data-caption="Poor Charlie’s Almanack · Charlie Munger"><span class="flat-title">Poor Charlie’s Almanack</span><span class="flat-author">Munger</span></a>
-              <a class="flat" style="--w: 262px; --t: 23px; --x: 6px" href="https://www.goodreads.com/search?q=%EC%8B%9C%EB%A0%A8%EC%9D%80+%EC%9E%88%EC%96%B4%EB%8F%84+%EC%8B%A4%ED%8C%A8%EB%8A%94+%EC%97%86%EB%8B%A4" data-caption="시련은 있어도 실패는 없다 · Chung Ju-yung"><span class="flat-title" lang="ko">시련은 있어도 실패는 없다</span><span class="flat-author">Chung</span></a>
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine" style="--w: 38px; --h: 186px" href="https://www.goodreads.com/search?q=Steve+Jobs+Walter+Isaacson" data-caption="Steve Jobs · Walter Isaacson"><span class="spine-title">Steve Jobs</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Isaacson</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 39px; --h: 210px" href="https://www.goodreads.com/search?q=Elon+Musk+Walter+Isaacson" data-caption="Elon Musk · Walter Isaacson"><span class="spine-title">Elon Musk</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Isaacson</span></a></li>
+                <li><a class="spine spine--band" style="--w: 30px; --h: 226px" href="https://www.goodreads.com/search?q=Last+Man+Standing+Jamie+Dimon+Duff+McDonald" data-caption="Last Man Standing · Duff McDonald, on Jamie Dimon"><span class="spine-title">Last Man Standing</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">McDonald</span></a></li>
+                <li><a class="spine" style="--w: 29px; --h: 222px" href="https://www.goodreads.com/search?q=Educated+Tara+Westover" data-caption="Educated · Tara Westover"><span class="spine-title">Educated</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Westover</span></a></li>
+                <li><a class="spine" style="--w: 27px; --h: 188px" href="https://www.goodreads.com/search?q=Hillbilly+Elegy+J.D.+Vance" data-caption="Hillbilly Elegy · J.D. Vance"><span class="spine-title">Hillbilly Elegy</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Vance</span></a></li>
+                <li><span class="spine spine--ink" style="--w: 24px; --h: 206px" data-caption="Building Thrive Capital · Invest Like the Best with Patrick O’Shaughnessy (podcast)"><span class="spine-title">Building Thrive Capital</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">ILTB</span></span></li>
+                <li><a class="spine spine--band" style="--w: 27px; --h: 214px" href="https://www.goodreads.com/search?q=Meditations+Marcus+Aurelius" data-caption="Meditations · Marcus Aurelius"><span class="spine-title">Meditations</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Aurelius</span></a></li>
+                <li><a class="spine" style="--w: 31px; --h: 217px" href="https://www.goodreads.com/search?q=The+Infinity+Machine+Sebastian+Mallaby" data-caption="The Infinity Machine · Sebastian Mallaby"><span class="spine-title">The Infinity Machine</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Mallaby</span></a></li>
+                <li><a class="spine" style="--w: 27px; --h: 204px" href="https://www.goodreads.com/search?q=Crying+in+H+Mart+Michelle+Zauner" data-caption="Crying in H Mart · Michelle Zauner"><span class="spine-title">Crying in H Mart</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Zauner</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 24px; --h: 190px" href="https://www.goodreads.com/search?q=The+Prince+Niccol%C3%B2+Machiavelli" data-caption="The Prince · Niccolò Machiavelli"><span class="spine-title">The Prince</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Machiavelli</span></a></li>
+              </ul>
             </div>
-          </li>
-        </ul>
-        <div class="shelf-label">
-          <h2 class="shelf-name" id="biography-memoir-name">Biography &amp; Memoir</h2>
-          <p class="shelf-note"></p>
+            <div class="stack" style="--pile: 268px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat flat--ink" style="--w: 253px; --t: 25px; --x: 0px" href="https://www.goodreads.com/search?q=Poor+Charlie's+Almanack" data-caption="Poor Charlie’s Almanack · Charlie Munger"><span class="flat-title">Poor Charlie’s Almanack</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Munger</span></a>
+              <a class="flat" style="--w: 262px; --t: 23px; --x: 6px" href="https://www.goodreads.com/search?q=%EC%8B%9C%EB%A0%A8%EC%9D%80+%EC%9E%88%EC%96%B4%EB%8F%84+%EC%8B%A4%ED%8C%A8%EB%8A%94+%EC%97%86%EB%8B%A4" data-caption="시련은 있어도 실패는 없다 · Chung Ju-yung"><span class="flat-title" lang="ko">시련은 있어도 실패는 없다</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Chung</span></a>
+              
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="biography-memoir-name">Biography &amp; Memoir</h2>
+            <p class="shelf-note"></p>
+          </div>
         </div>
       </section>
 
       <section class="shelf" id="econ-finance" aria-labelledby="econ-finance-name">
-        <ul class="shelf-books">
-          <li><a class="spine" style="--w: 33px; --h: 224px" href="https://www.goodreads.com/search?q=More+Money+Than+God+Sebastian+Mallaby" data-caption="More Money Than God · Sebastian Mallaby"><span class="spine-title">More Money Than God</span><span class="spine-author">Mallaby</span></a></li>
-          <li><a class="spine spine--ink" style="--w: 28px; --h: 208px" href="https://www.goodreads.com/search?q=One+Up+on+Wall+Street+Peter+Lynch" data-caption="One Up on Wall Street · Peter Lynch"><span class="spine-title">One Up on Wall Street</span><span class="spine-author">Lynch</span></a></li>
-          <li class="stack-slot">
-            <div class="stack">
-              <span class="stack-label">Currently reading</span>
-              <a class="flat" style="--w: 184px; --t: 24px; --x: 0px" href="https://www.goodreads.com/search?q=Antifragile+Nassim+Nicholas+Taleb" data-caption="Antifragile · Nassim Nicholas Taleb"><span class="flat-title">Antifragile</span><span class="flat-author">Taleb</span></a>
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine" style="--w: 33px; --h: 231px" href="https://www.goodreads.com/search?q=More+Money+Than+God+Sebastian+Mallaby" data-caption="More Money Than God · Sebastian Mallaby"><span class="spine-title">More Money Than God</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Mallaby</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 28px; --h: 214px" href="https://www.goodreads.com/search?q=One+Up+on+Wall+Street+Peter+Lynch" data-caption="One Up on Wall Street · Peter Lynch"><span class="spine-title">One Up on Wall Street</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Lynch</span></a></li>
+              </ul>
             </div>
-          </li>
-        </ul>
-        <div class="shelf-label">
-          <h2 class="shelf-name" id="econ-finance-name">Econ &amp; Finance</h2>
-          <p class="shelf-note"></p>
+            <div class="stack" style="--pile: 184px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 184px; --t: 24px; --x: 0px" href="https://www.goodreads.com/search?q=Antifragile+Nassim+Nicholas+Taleb" data-caption="Antifragile · Nassim Nicholas Taleb"><span class="flat-title">Antifragile</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Taleb</span></a>
+              
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="econ-finance-name">Econ &amp; Finance</h2>
+            <p class="shelf-note"></p>
+          </div>
         </div>
       </section>
 
       <section class="shelf" id="history" aria-labelledby="history-name">
-        <ul class="shelf-books">
-          <li><a class="spine spine--band" style="--w: 30px; --h: 200px" href="https://www.goodreads.com/search?q=On+Grand+Strategy+John+Lewis+Gaddis" data-caption="On Grand Strategy · John Lewis Gaddis"><span class="spine-title">On Grand Strategy</span><span class="spine-author">Gaddis</span></a></li>
-          <li><a class="spine spine--ink" style="--w: 35px; --h: 210px" href="https://www.goodreads.com/search?q=Leadership+Six+Studies+in+World+Strategy+Henry+Kissinger" data-caption="Leadership: Six Studies in World Strategy · Henry Kissinger"><span class="spine-title">Leadership</span><span class="spine-author">Kissinger</span></a></li>
-          <li><a class="spine" style="--w: 33px; --h: 194px" href="https://www.goodreads.com/search?q=Sapiens+Yuval+Noah+Harari" data-caption="Sapiens · Yuval Noah Harari"><span class="spine-title">Sapiens</span><span class="spine-author">Harari</span></a></li>
-          <li><a class="spine" style="--w: 34px; --h: 227px" href="https://www.goodreads.com/search?q=Guns+Germs+and+Steel+Jared+Diamond" data-caption="Guns, Germs, and Steel · Jared Diamond"><span class="spine-title">Guns, Germs, and Steel</span><span class="spine-author">Diamond</span></a></li>
-          <li class="stack-slot">
-            <div class="stack">
-              <span class="stack-label">Currently reading</span>
-              <a class="flat" style="--w: 184px; --t: 26px; --x: 0px" href="https://www.goodreads.com/search?q=On+War+Carl+von+Clausewitz" data-caption="On War · Carl von Clausewitz"><span class="flat-title">On War</span><span class="flat-author">Clausewitz</span></a>
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--band" style="--w: 30px; --h: 206px" href="https://www.goodreads.com/search?q=On+Grand+Strategy+John+Lewis+Gaddis" data-caption="On Grand Strategy · John Lewis Gaddis"><span class="spine-title">On Grand Strategy</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Gaddis</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 35px; --h: 210px" href="https://www.goodreads.com/search?q=Leadership+Six+Studies+in+World+Strategy+Henry+Kissinger" data-caption="Leadership: Six Studies in World Strategy · Henry Kissinger"><span class="spine-title">Leadership</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kissinger</span></a></li>
+                <li><a class="spine" style="--w: 33px; --h: 194px" href="https://www.goodreads.com/search?q=Sapiens+Yuval+Noah+Harari" data-caption="Sapiens · Yuval Noah Harari"><span class="spine-title">Sapiens</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Harari</span></a></li>
+                <li><a class="spine" style="--w: 34px; --h: 234px" href="https://www.goodreads.com/search?q=Guns+Germs+and+Steel+Jared+Diamond" data-caption="Guns, Germs, and Steel · Jared Diamond"><span class="spine-title">Guns, Germs, and Steel</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Diamond</span></a></li>
+              </ul>
             </div>
-          </li>
-        </ul>
-        <div class="shelf-label">
-          <h2 class="shelf-name" id="history-name">History</h2>
-          <p class="shelf-note"></p>
+            <div class="stack" style="--pile: 184px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 184px; --t: 26px; --x: 0px" href="https://www.goodreads.com/search?q=On+War+Carl+von+Clausewitz" data-caption="On War · Carl von Clausewitz"><span class="flat-title">On War</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Clausewitz</span></a>
+              
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="history-name">History</h2>
+            <p class="shelf-note"></p>
+          </div>
         </div>
       </section>
 
       <section class="shelf" id="tech" aria-labelledby="tech-name">
-        <ul class="shelf-books">
-          <li><a class="spine spine--ink" style="--w: 26px; --h: 188px" href="https://www.goodreads.com/search?q=Zero+to+One+Peter+Thiel" data-caption="Zero to One · Peter Thiel"><span class="spine-title">Zero to One</span><span class="spine-author">Thiel</span></a></li>
-          <li><a class="spine" style="--w: 29px; --h: 230px" href="https://www.goodreads.com/search?q=The+Technological+Republic+Alexander+Karp" data-caption="The Technological Republic · Alexander C. Karp &amp; Nicholas W. Zamiska"><span class="spine-title">The Technological Republic</span><span class="spine-author">Karp</span></a></li>
-          <li><a class="spine spine--band" style="--w: 28px; --h: 238px" href="https://www.goodreads.com/search?q=Secrets+of+Sand+Hill+Road+Scott+Kupor" data-caption="Secrets of Sand Hill Road · Scott Kupor"><span class="spine-title">Secrets of Sand Hill Road</span><span class="spine-author">Kupor</span></a></li>
-        </ul>
-        <div class="shelf-label">
-          <h2 class="shelf-name" id="tech-name">Tech</h2>
-          <p class="shelf-note"></p>
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 26px; --h: 188px" href="https://www.goodreads.com/search?q=Zero+to+One+Peter+Thiel" data-caption="Zero to One · Peter Thiel"><span class="spine-title">Zero to One</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Thiel</span></a></li>
+                <li><a class="spine" style="--w: 29px; --h: 237px" href="https://www.goodreads.com/search?q=The+Technological+Republic+Alexander+Karp" data-caption="The Technological Republic · Alexander C. Karp &amp; Nicholas W. Zamiska"><span class="spine-title">The Technological Republic</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Karp</span></a></li>
+                <li><a class="spine spine--band" style="--w: 28px; --h: 244px" href="https://www.goodreads.com/search?q=Secrets+of+Sand+Hill+Road+Scott+Kupor" data-caption="Secrets of Sand Hill Road · Scott Kupor"><span class="spine-title">Secrets of Sand Hill Road</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kupor</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="tech-name">Tech</h2>
+            <p class="shelf-note"></p>
+          </div>
         </div>
       </section>
     </main>
@@ -137,23 +164,6 @@
     </footer>
   </div>
 
-  <script>
-    // Each shelf's note counts its books, and names whichever book you point at.
-    document.querySelectorAll('.shelf').forEach(shelf => {
-      const note = shelf.querySelector('.shelf-note');
-      const read = shelf.querySelectorAll('.spine').length;
-      const reading = shelf.querySelectorAll('.flat').length;
-      const summary = reading ? `${read}\u00a0read \u00b7 ${reading}\u00a0currently\u00a0reading` : `${read}\u00a0read`;
-      note.textContent = summary;
-      shelf.querySelectorAll('[data-caption]').forEach(book => {
-        const name = () => { note.textContent = book.dataset.caption; };
-        const reset = () => { note.textContent = summary; };
-        book.addEventListener('pointerenter', name);
-        book.addEventListener('focus', name);
-        book.addEventListener('pointerleave', reset);
-        book.addEventListener('blur', reset);
-      });
-    });
-  </script>
+  <script src="/bookshelf/bookshelf.js"></script>
 </body>
 </html>
