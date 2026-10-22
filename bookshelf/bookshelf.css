@@ -1,0 +1,206 @@
+/* Bookshelf. Loaded after /pages.css. */
+
+.shelf {
+  margin-top: 36px;
+}
+
+.shelf:first-of-type {
+  margin-top: 8px;
+}
+
+/* Books sit on a 2px rule, the same weight as the page's divider; when a shelf
+   wraps onto a second row, each row gets its own rule. */
+.shelf-books {
+  --row: 250px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: 3px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--row) - 2px), var(--ink) calc(var(--row) - 2px) var(--row));
+}
+
+.shelf-books > li {
+  display: flex;
+  align-items: flex-end;
+  height: var(--row);
+  padding-bottom: 2px;
+}
+
+.spine {
+  writing-mode: vertical-rl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: var(--w, 30px);
+  height: var(--h, 170px);
+  padding: 10px 0 8px;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 2px 2px 0 0;
+  transition: transform 180ms var(--ease-out);
+}
+
+a.spine:hover,
+a.spine:focus-visible,
+span.spine:hover {
+  transform: translateY(-8px);
+}
+
+a.spine:focus-visible,
+a.flat:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.spine-title {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.spine-title:lang(ko),
+.flat-title:lang(ko) {
+  font-family: 'AppleMyungjo', 'Nanum Myeongjo', var(--serif);
+}
+
+.spine-author,
+.flat-author {
+  flex: none;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spine--ink {
+  color: #fff;
+  background: var(--ink);
+}
+
+.spine--ink .spine-author,
+.flat--ink .flat-author {
+  color: #aaa;
+}
+
+/* Two thin bands near the top and bottom, like a cloth-bound spine */
+.spine--band {
+  padding: 16px 0 14px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 0 7px / 100% 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 calc(100% - 7px) / 100% 1px no-repeat,
+    #fff;
+}
+
+/* Currently reading: a small pile lying flat at the end of the shelf. It takes whatever
+   room the standing books leave, so on a phone it narrows instead of wrapping. */
+.stack-slot {
+  flex: 1 0 150px;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.stack-slot > .stack {
+  width: 100%;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stack-label {
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.flat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: min(var(--w, 200px), 100%);
+  height: var(--t, 24px);
+  margin-top: -1.5px;
+  margin-right: var(--x, 0px);
+  padding: 0 9px;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  transition: transform 180ms var(--ease-out);
+}
+
+.flat:hover,
+.flat:focus-visible {
+  transform: translateX(-6px);
+}
+
+.flat--ink {
+  color: #fff;
+  background: var(--ink);
+}
+
+.flat-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.shelf-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.shelf-name {
+  flex: none;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.shelf-note {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* On a phone, a long count wraps under itself instead of being cut off */
+@media (max-width: 480px) {
+  .shelf-note {
+    white-space: normal;
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spine,
+  .flat {
+    transition-duration: 0ms;
+  }
+}
