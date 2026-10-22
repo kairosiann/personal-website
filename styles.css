@@ -136,6 +136,127 @@ hr {
   display: block;
 }
 
+/* Scroll-driven sections (enabled by script.js): the intro and tabs stay pinned
+   while scrolling the page steps through the sections underneath them. */
+/* script.js owns the scroll position here; stop the browser nudging it on resize */
+html:has(.scrolly-on) {
+  overflow-anchor: none;
+}
+
+.home.scrolly-on {
+  margin: 0 auto;
+}
+
+.scrolly-on .stage {
+  position: sticky;
+  top: calc(-1 * var(--pin-offset, 0px));
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh + var(--pin-offset, 0px));
+  padding-top: clamp(40px, 9svh, 80px);
+}
+
+.scrolly-on .panel {
+  --fade-top: 0px;
+  --fade-bottom: 0px;
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--fade-top), #000 calc(100% - var(--fade-bottom)), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--fade-top), #000 calc(100% - var(--fade-bottom)), transparent);
+}
+
+/* Soften the edges where a long section is cut off */
+.scrolly-on .panel.has-above {
+  --fade-top: 28px;
+}
+
+.scrolly-on .panel.has-more {
+  --fade-bottom: 56px;
+}
+
+.scrolly-on .tab-content {
+  position: absolute;
+  inset: 0 0 auto;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 10px;
+  transition:
+    opacity 120ms ease,
+    translate 0s linear 120ms,
+    visibility 0s linear 120ms;
+}
+
+.scrolly-on .tab-content.visible {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition:
+    opacity 260ms ease 90ms,
+    translate 360ms cubic-bezier(0.2, 0, 0, 1) 90ms;
+}
+
+/* The active tab fills its underline as you scroll through its section */
+.scrolly-on .nav-tab {
+  position: relative;
+}
+
+.scrolly-on .nav-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+}
+
+.scroll-cue {
+  display: none;
+}
+
+.scrolly-on .scroll-cue {
+  display: block;
+  flex: none;
+  padding: 10px 0 18px;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  transition: opacity 300ms ease;
+}
+
+.scroll-cue span {
+  display: inline-block;
+  animation: nudge 1.6s ease-in-out infinite;
+}
+
+.scroll-cue.is-hidden {
+  opacity: 0;
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrolly-on .tab-content,
+  .scrolly-on .tab-content.visible,
+  .scrolly-on .scroll-cue {
+    transition: none;
+  }
+
+  .scroll-cue span {
+    animation: none;
+  }
+}
+
 /* Entries */
 .entry {
   margin-bottom: 20px;
