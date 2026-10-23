@@ -88,7 +88,8 @@
 
 a.spine:hover,
 a.spine:focus-visible,
-span.spine:hover {
+span.spine:hover,
+.spine.is-on {
   transform: translateY(-8px);
 }
 
@@ -371,11 +372,454 @@ a.flat:focus-visible {
   color: var(--ink);
 }
 
+/* ---------- Watching and listening ----------
+   The two lower shelves hold films and videos, then podcasts. Each ends in a deck
+   where the books' shelf has its "Currently reading" pile: a film camera and a
+   record player. Picking something (bookshelf.js marks it .is-on and the shelf
+   .is-playing) sets the deck going. */
+.shelf--media .shelf-books {
+  height: var(--shelf-h, 220px);
+}
+
+.deck {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* A small mark at the head of each sleeve and case: a record, or a play button */
+.media-mark {
+  flex: none;
+  margin-bottom: 3px;
+}
+
+.media-mark--record {
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  border: 1.1px solid currentColor;
+  border-radius: 50%;
+  background: radial-gradient(currentColor 0 1px, transparent 1.5px);
+}
+
+.dvd {
+  border-radius: 3px 3px 0 0;
+}
+
+.dvd .spine-title {
+  font-size: 11.5px;
+}
+
+.shelf-books > li.bookend {
+  width: 4px;
+  height: 120px;
+  margin: 0 5px;
+  background: var(--ink);
+}
+
+/* Films come in round cans standing on edge, each with a strip of label tape.
+   Picking one rolls it a little. */
+.tin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--d, 84px);
+  height: var(--d, 84px);
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  transition: transform 240ms var(--ease-out);
+}
+
+.tin::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.tin-label {
+  position: relative;
+  max-width: calc(var(--d, 84px) - 20px);
+  padding: 3px 4px;
+  font-family: var(--serif);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--ink);
+}
+
+.tin:hover,
+.tin:focus-visible,
+.tin.is-on {
+  transform: translateY(-6px) rotate(-10deg);
+}
+
+.tin:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* The film camera, side on and facing the shelf: a body with a lens turret and a
+   crank, and two spoked reels on top that turn while something's showing. */
+.camera {
+  position: relative;
+  width: 132px;
+  height: 128px;
+}
+
+.camera > span {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+
+.camera > .camera-reel {
+  bottom: 62px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 25%, #fff 0 5px, var(--ink) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 28% 62%, #fff 0 5px, var(--ink) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle at 72% 62%, #fff 0 5px, var(--ink) 5.5px 7px, transparent 7.5px),
+    radial-gradient(circle, var(--ink) 0 3.5px, transparent 4px),
+    #fff;
+  animation: spin 2.4s linear infinite paused;
+}
+
+.camera > .camera-reel--front {
+  left: 18px;
+  width: 60px;
+  height: 60px;
+}
+
+.camera > .camera-reel--back {
+  left: 68px;
+  width: 54px;
+  height: 54px;
+  animation-duration: 2.1s;
+}
+
+.camera > .camera-body {
+  left: 14px;
+  bottom: 0;
+  width: 112px;
+  height: 66px;
+  border-radius: 6px;
+}
+
+.camera > .camera-body::before {
+  content: "";
+  position: absolute;
+  inset: 8px 10px 8px 16px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+}
+
+.camera > .camera-lens--long {
+  left: 0;
+  bottom: 32px;
+  width: 22px;
+  height: 18px;
+  background: var(--ink);
+}
+
+.camera > .camera-lens--short {
+  left: 4px;
+  bottom: 10px;
+  width: 16px;
+  height: 14px;
+}
+
+.camera > .camera-crank {
+  right: 0;
+  bottom: 26px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite paused;
+}
+
+.camera > .camera-crank::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 2px;
+  height: 12px;
+  background: var(--ink);
+}
+
+.shelf.is-playing .camera > .camera-reel,
+.shelf.is-playing .camera > .camera-crank,
+.shelf.is-playing .tt-record {
+  animation-play-state: running;
+}
+
+/* The record player is a real 3D box seen from a little above: its top is drawn
+   flat, then tipped back, so the record spins in true perspective and the
+   tonearm can lift off it. Picking a record cues it: the arm rises off its rest,
+   swings over the record, and lowers onto it. */
+.turntable {
+  position: relative;
+  width: 206px;
+  height: 128px;
+  perspective: 700px;
+  perspective-origin: 50% -60%;
+}
+
+.tt-box {
+  position: absolute;
+  left: 8px;
+  bottom: 24px;
+  width: 188px;
+  height: 140px;
+  transform-style: preserve-3d;
+  transform-origin: 50% 100%;
+  transform: rotateX(56deg);
+}
+
+.tt-top,
+.tt-face {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+
+.tt-top {
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/* The front hangs down from the top's front edge */
+.tt-face--front {
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  transform-origin: 50% 0;
+  transform: rotateX(-90deg);
+}
+
+.tt-face--side {
+  left: 100%;
+  top: 0;
+  width: 28px;
+  height: 100%;
+  transform-origin: 0 50%;
+  transform: rotateY(90deg);
+  backface-visibility: hidden;
+}
+
+.tt-knob {
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+}
+
+.tt-knob--ink {
+  background: var(--ink);
+}
+
+.tt-speed {
+  margin-left: auto;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.tt-platter {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 120px;
+  height: 120px;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ink);
+  transform: translateZ(3px);
+}
+
+.tt-record {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--ink) 0 2px, #fff 2.5px 18px, transparent 18.5px),
+    repeating-radial-gradient(circle, #111 0 2px, #2e2e2e 2px 3.5px);
+  animation: spin 1.8s linear infinite paused;
+}
+
+/* A sheen across the grooves, so you can see it turn */
+.tt-record::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 6px;
+  height: 30px;
+  margin-left: -3px;
+  background: #fff;
+  opacity: 0.35;
+}
+
+/* The arm's pivot and its rest, each a short post: a disc on the deck and
+   another raised above it */
+.tt-pivot,
+.tt-rest {
+  position: absolute;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+}
+
+.tt-pivot {
+  left: 150px;
+  top: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.tt-rest {
+  left: 156px;
+  top: 104px;
+  width: 8px;
+  height: 8px;
+}
+
+.tt-pivot::after,
+.tt-rest::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: var(--ink);
+  transform: translateZ(9px);
+}
+
+/* The arm swings about the pivot in the deck's plane, and lifts off it in 3D */
+.tt-arm {
+  position: absolute;
+  left: 160px;
+  top: 24px;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+.tt-arm-shadow,
+.tt-arm-bar,
+.tt-headshell {
+  position: absolute;
+  background: var(--ink);
+}
+
+.tt-arm-shadow {
+  left: 1px;
+  top: -14px;
+  width: 4px;
+  height: 108px;
+  opacity: 0.16;
+  filter: blur(1.5px);
+}
+
+.tt-arm-lift {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(10px);
+}
+
+.tt-arm-bar {
+  left: -1.5px;
+  top: -20px;
+  width: 3px;
+  height: 108px;
+}
+
+/* The counterweight behind the pivot, and the headshell at the arm's tip */
+.tt-arm-bar::before {
+  content: "";
+  position: absolute;
+  left: -3.5px;
+  top: 0;
+  width: 10px;
+  height: 12px;
+  background: var(--ink);
+}
+
+.tt-headshell {
+  left: -4.5px;
+  top: 84px;
+  width: 9px;
+  height: 14px;
+  border-radius: 1px;
+}
+
+.shelf.is-playing .tt-arm {
+  transform: rotateZ(32deg);
+  transition-delay: 260ms;
+}
+
+.shelf.is-playing .tt-arm-lift {
+  transform: translateZ(6px);
+}
+
+.shelf.is-cueing .tt-arm-lift {
+  animation: cue 1100ms cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+@keyframes cue {
+  0% { transform: translateZ(10px); }
+  22%, 74% { transform: translateZ(24px); }
+  100% { transform: translateZ(6px); }
+}
+
+/* On a phone the decks shrink to leave the shelf room */
+@media (max-width: 480px) {
+  .turntable,
+  .camera {
+    zoom: 0.8;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .spine,
   .flat,
+  .tin,
+  .tt-arm,
   .shelf-books > li.has-cover,
   .shelf-books > li.is-turning > .spine {
     transition-duration: 0ms;
+  }
+
+  .camera > .camera-reel,
+  .camera > .camera-crank,
+  .tt-record,
+  .shelf.is-cueing .tt-arm-lift {
+    animation: none;
   }
 }

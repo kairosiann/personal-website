@@ -36,7 +36,8 @@
       <!-- To add a book: copy a spine <li> onto the shelf. Books I'm reading go in the "Currently reading" stack as flat <a class="flat"> books.
            data-tag is the book's category, shown as a #tag on its cover when it's opened.
            --w is a spine's thickness, --h its height; --t is a flat book's thickness; the stack's --pile is its widest book.
-           A shelf whose books don't fit across pins in place and slides them sideways as you scroll. -->
+           A shelf whose books don't fit across pins in place and slides them sideways as you scroll.
+           The two shelves below hold films, videos and podcasts (class "media"): clicking one sets the shelf's deck going, and clicking it again follows its link. -->
 
       <section class="shelf" id="reading" aria-labelledby="reading-name">
         <div class="shelf-pin">
@@ -95,6 +96,78 @@
           </div>
           <div class="shelf-label">
             <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Listening: podcast episodes as record sleeves. The record player is the shelf's deck. -->
+      <section class="shelf shelf--media" id="listening" aria-labelledby="listening-name" style="--shelf-h: 254px">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine media sleeve" style="--w: 25px; --h: 242px" href="https://colossus.com/episode/senra-passion-pain/" data-caption="Passion &amp; Pain · David Senra, Invest Like the Best" data-source="Colossus"><span class="media-mark media-mark--record" aria-hidden="true"></span><span class="spine-title">Passion &amp; Pain</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Senra</span></a></li>
+                <li><a class="spine spine--band media sleeve" style="--w: 25px; --h: 242px" href="https://colossus.com/episode/kushner-building-thrive-capital/" data-caption="Building Thrive Capital · Josh Kushner, Invest Like the Best" data-source="Colossus"><span class="media-mark media-mark--record" aria-hidden="true"></span><span class="spine-title">Building Thrive</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kushner</span></a></li>
+                <li><a class="spine media sleeve" style="--w: 25px; --h: 242px" href="https://colossus.com/episode/concentration-and-conviction/" data-caption="Concentration and Conviction · Josh Kushner, Invest Like the Best" data-source="Colossus"><span class="media-mark media-mark--record" aria-hidden="true"></span><span class="spine-title">Conviction</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kushner</span></a></li>
+                <li><a class="spine spine--band media sleeve" style="--w: 25px; --h: 242px" href="https://colossus.com/episode/leone-clear-and-simple/" data-caption="Lessons from a Titan · Doug Leone, Invest Like the Best" data-source="Colossus"><span class="media-mark media-mark--record" aria-hidden="true"></span><span class="spine-title">Lessons from a Titan</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Leone</span></a></li>
+              </ul>
+            </div>
+            <div class="deck" data-idle="Pick a record" data-active="Now playing">
+              <span class="stack-label deck-label">Pick a record</span>
+              <div class="turntable" aria-hidden="true">
+                <div class="tt-box">
+                  <span class="tt-face tt-face--front"><span class="tt-knob"></span><span class="tt-knob tt-knob--ink"></span><span class="tt-speed">33&#8531;</span></span>
+                  <span class="tt-face tt-face--side"></span>
+                  <span class="tt-top">
+                    <span class="tt-platter"><span class="tt-record"></span></span>
+                    <span class="tt-rest"></span>
+                    <span class="tt-arm">
+                      <span class="tt-arm-shadow"></span>
+                      <span class="tt-arm-lift"><span class="tt-arm-bar"></span><span class="tt-headshell"></span></span>
+                    </span>
+                    <span class="tt-pivot"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="listening-name">Listening</h2>
+            <p class="shelf-note" data-summary="4 episodes"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Watching: films in cans (the four films are stand-ins), then videos as DVD cases. The camera is the shelf's deck. -->
+      <section class="shelf shelf--media" id="watching" aria-labelledby="watching-name" style="--shelf-h: 216px">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="media tin" style="--d: 84px" href="https://letterboxd.com/search/The+Social+Network/" data-caption="The Social Network · David Fincher, 2010" data-source="Letterboxd"><span class="tin-label">The Social Network</span></a></li>
+                <li><a class="media tin" style="--d: 78px" href="https://letterboxd.com/search/Jiro+Dreams+of+Sushi/" data-caption="Jiro Dreams of Sushi · David Gelb, 2011" data-source="Letterboxd"><span class="tin-label">Jiro Dreams of Sushi</span></a></li>
+                <li><a class="media tin" style="--d: 82px" href="https://letterboxd.com/search/Ford+v+Ferrari/" data-caption="Ford v Ferrari · James Mangold, 2019" data-source="Letterboxd"><span class="tin-label">Ford v Ferrari</span></a></li>
+                <li><a class="media tin" style="--d: 88px" href="https://letterboxd.com/search/Oppenheimer/" data-caption="Oppenheimer · Christopher Nolan, 2023" data-source="Letterboxd"><span class="tin-label">Oppenheimer</span></a></li>
+                <li class="bookend" aria-hidden="true"></li>
+                <li><a class="spine spine--ink media dvd" style="--w: 22px; --h: 190px" href="https://www.youtube.com/results?search_query=Steve+Jobs+iPad+launch+2010" data-caption="iPad Launch · Steve Jobs, 2010" data-source="YouTube"><svg class="media-mark" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 1 L7 4 L1.5 7 Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg><span class="spine-title">iPad Launch</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Jobs</span></a></li>
+                <li><a class="spine spine--ink media dvd" style="--w: 22px; --h: 206px" href="https://www.youtube.com/results?search_query=Stripe+Sessions+2025+Patrick+Collison+Jony+Ive" data-caption="Stripe Sessions 2025 · Patrick Collison &amp; Jony Ive" data-source="YouTube"><svg class="media-mark" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 1 L7 4 L1.5 7 Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg><span class="spine-title">Stripe Sessions</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Collison</span></a></li>
+              </ul>
+            </div>
+            <div class="deck" data-idle="Pick a reel" data-active="Now showing">
+              <span class="stack-label deck-label">Pick a reel</span>
+              <div class="camera" aria-hidden="true">
+                <span class="camera-reel camera-reel--back"></span>
+                <span class="camera-reel camera-reel--front"></span>
+                <span class="camera-body"></span>
+                <span class="camera-lens camera-lens--long"></span>
+                <span class="camera-lens camera-lens--short"></span>
+                <span class="camera-crank"></span>
+              </div>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="watching-name">Watching</h2>
+            <p class="shelf-note" data-summary="4 films · 2 videos"></p>
           </div>
         </div>
       </section>

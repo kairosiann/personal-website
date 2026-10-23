@@ -1,17 +1,19 @@
-// Shelf notes, sideways scrolling for shelves with more books than fit across, and
-// opening a book to its cover.
+// Shelf notes, sideways scrolling for shelves with more books than fit across,
+// opening a book to its cover, and setting the lower shelves' decks going.
 document.addEventListener('DOMContentLoaded', () => {
   const shelves = [...document.querySelectorAll('.shelf')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Each shelf's note counts its books, names whichever book you point at, and
-  // while a book is open, names it with a link out.
+  // Each shelf's note counts its books (or says what's on it), names whichever
+  // book you point at, and while a book is open or a record is playing, names it
+  // with a link out.
   const notes = new Map();
   shelves.forEach(shelf => {
     const note = shelf.querySelector('.shelf-note');
     const read = shelf.querySelectorAll('.spine').length;
     const reading = shelf.querySelectorAll('.flat').length;
-    const summary = reading ? `${read} read · ${reading} currently reading` : `${read} read`;
+    const summary = note.dataset.summary
+      || (reading ? `${read} read · ${reading} currently reading` : `${read} read`);
     const state = { note, summary, open: null };
     notes.set(shelf, state);
     resetNote(state);
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const link = document.createElement('a');
       link.className = 'outbound-link';
       link.href = open.href;
-      link.textContent = 'Goodreads';
+      link.textContent = open.dataset.source || 'Goodreads';
       note.append(' — ', link);
     }
   }
@@ -139,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const TURN = 620;
   let current = null;
 
-  document.querySelectorAll('.shelf-books .spine').forEach(spine => {
+  document.querySelectorAll('.shelf-books .spine:not(.media)').forEach(spine => {
     const li = spine.parentElement;
     const [, author = ''] = spine.dataset.caption.split(' · ');
     const title = spine.querySelector('.spine-title');
@@ -221,7 +223,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.key === 'Escape' && current) close(current);
   });
   document.addEventListener('click', event => {
-    if (current && !event.target.closest('.spine, .shelf-note a')) close(current);
+    if (current && !event.target.closest('.has-cover > .spine, .shelf-note a')) close(current);
+  });
+
+  // The films, videos and podcasts on the lower shelves: the first click on one
+  // puts it on the shelf's deck, which sets the camera's reels or the record
+  // turning, and names it with a link out; clicking it again follows the link.
+  document.querySelectorAll('.shelf--media').forEach(shelf => {
+    const items = [...shelf.querySelectorAll('.media')];
+    const deck = shelf.querySelector('.deck');
+    const label = deck.querySelector('.deck-label');
+    const state = notes.get(shelf);
+    items.forEach(item => {
+      item.addEventListener('click', event => {
+        if (item.classList.contains('is-on')) return;
+        event.preventDefault();
+        items.forEach(other => other.classList.remove('is-on'));
+        item.classList.add('is-on');
+        // Cue it: restart the arm's lift-swing-lower, even on a second record.
+        shelf.classList.remove('is-cueing');
+        void shelf.offsetWidth;
+        shelf.classList.add('is-playing', 'is-cueing');
+        label.textContent = deck.dataset.active;
+        state.open = item;
+        resetNote(state);
+      });
+    });
   });
 
   layout();
