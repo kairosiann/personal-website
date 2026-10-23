@@ -56,23 +56,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   let frame = 0;
 
+  // Nothing here shrinks the page while measuring: if it did, the browser would pull
+  // the scroll position up to fit, and the reader would lose their place.
+  const main = document.querySelector('main');
+
   function layout() {
     rows.forEach(row => {
-      row.shelf.classList.remove('is-scrolling');
-      row.shelf.style.height = '';
-      row.books.style.transform = '';
       row.overflow = Math.max(0, Math.ceil(row.books.offsetWidth - row.view.clientWidth));
+      row.shelf.classList.toggle('is-scrolling', row.overflow > 0);
+      if (!row.overflow) {
+        row.shelf.style.height = '';
+        row.books.style.transform = '';
+        return;
+      }
+      row.shelf.style.height = `${row.pin.offsetHeight + row.overflow + HOLD * 2}px`;
     });
+    // Measure after every shelf has its height, since each one moves the next. A
+    // shelf pins in the middle of the window, or higher if the page can't scroll
+    // back far enough to show its first books from there.
     rows.forEach(row => {
+      row.top = row.shelf.getBoundingClientRect().top + window.scrollY;
+      // An open cover can be no wider than the strip it opens in.
+      row.shelf.style.setProperty('--strip', `${row.view.clientWidth}px`);
       if (!row.overflow) return;
-      const height = row.pin.offsetHeight;
-      row.stick = Math.max(16, Math.round((window.innerHeight - height) / 2));
-      row.shelf.classList.add('is-scrolling');
+      const centred = Math.round((window.innerHeight - row.pin.offsetHeight) / 2);
+      row.stick = Math.max(16, Math.min(centred, row.top + HOLD));
       row.shelf.style.setProperty('--stick', `${row.stick}px`);
-      row.shelf.style.height = `${height + row.overflow + HOLD * 2}px`;
     });
-    // Measure after every shelf has its height, since each one moves the next.
-    rows.forEach(row => { row.top = row.shelf.getBoundingClientRect().top + window.scrollY; });
+    // A sliding shelf near the foot of the page needs the page to scroll far enough
+    // to carry its books all the way across; if it can't, pad the page out.
+    const last = rows.filter(row => row.overflow).pop();
+    const padding = parseFloat(main.style.paddingBottom) || 0;
+    const room = document.documentElement.scrollHeight - window.innerHeight - padding;
+    const end = last ? last.top - last.stick + HOLD * 2 + last.overflow : 0;
+    main.style.paddingBottom = end > room ? `${Math.ceil(end - room)}px` : '';
     render();
   }
 
@@ -114,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!pending) pending = requestAnimationFrame(() => { pending = 0; layout(); });
   });
   rows.forEach(row => { observer.observe(row.view); observer.observe(row.books); });
+  observer.observe(document.documentElement);
 
   // Opening a book: the first click on a spine turns the book to show its cover;
   // clicking the cover then follows the book's link. Escape, or clicking anywhere
@@ -137,6 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const coverAuthor = document.createElement('span');
     coverAuthor.className = 'cover-author';
     coverAuthor.textContent = author;
+    if (spine.dataset.tag) {
+      const coverTag = document.createElement('span');
+      coverTag.className = 'cover-tag';
+      coverTag.textContent = `#${spine.dataset.tag}`;
+      cover.append(coverTag);
+    }
     cover.append(coverTitle, coverAuthor);
     spine.append(cover);
 

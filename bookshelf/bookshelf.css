@@ -1,5 +1,12 @@
 /* Bookshelf. Loaded after /pages.css. */
 
+/* The intro's key to the black spines, set like one */
+.ink-key {
+  padding: 1px 5px;
+  color: #fff;
+  background: var(--ink);
+}
+
 .shelf {
   margin-top: 36px;
 }
@@ -251,17 +258,18 @@ a.flat:focus-visible {
    Stripe Press. Each spine is the front of a 3D book; bookshelf.js adds a cover
    folded back along its right edge. Opening turns the book a quarter turn about
    that edge so the cover swings round to the front, while its slot widens from
-   the spine's thickness (--book-w) to the cover's width (--cover-w) and the
-   books beside it slide over. */
+   the spine's thickness (--book-w) to the cover's width (--cover-w, or the
+   strip's width, --strip, if that's narrower) and the books beside it slide over. */
 .shelf-books > li.has-cover {
   --turn-ease: cubic-bezier(0.65, 0, 0.25, 1);
+  --open-w: min(var(--cover-w), var(--strip, var(--cover-w)));
   width: var(--book-w);
   perspective: 900px;
   transition: width 620ms var(--turn-ease);
 }
 
 .shelf-books > li.has-cover.is-open {
-  width: var(--cover-w);
+  width: var(--open-w);
 }
 
 .has-cover > .spine {
@@ -289,8 +297,7 @@ a.flat:focus-visible {
   writing-mode: horizontal-tb;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: var(--cover-w);
+  width: var(--open-w);
   height: calc(100% + 1.5px);
   padding: 18px 14px 14px;
   color: var(--ink);
@@ -299,6 +306,19 @@ a.flat:focus-visible {
   border-bottom: 0;
   transform-origin: 0 50%;
   transform: rotateY(90deg);
+}
+
+/* The book's category, set small above the title like a series mark */
+.cover-tag {
+  margin-bottom: 8px;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.spine--ink .cover-tag {
+  color: #aaa;
 }
 
 .cover-title {
@@ -315,6 +335,7 @@ a.flat:focus-visible {
 }
 
 .cover-author {
+  margin-top: auto;
   font-size: 9px;
   line-height: 1.5;
   letter-spacing: 0.08em;
