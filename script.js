@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let segments = [];
   let trackTop = 0;
   let pinOffset = 0;
-  let current = -1;
+  let current = null;
   let frame = 0;
 
   home.classList.add('scrolly-on');
@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const panelHeight = panel.clientHeight;
     const hold = Math.max(240, Math.round(viewport * 0.4));
-    let start = 0;
+    // A lead-in with an empty panel comes first, so no section shows until you scroll.
+    let start = Math.round(hold * 0.5);
     segments = sections.map(section => {
       const overflow = Math.max(0, section.offsetHeight - panelHeight);
       const segment = { start, hold, overflow, length: hold + overflow };
@@ -47,17 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.style.height = `${stage.offsetHeight + start}px`;
     trackTop = track.getBoundingClientRect().top + window.scrollY;
-    if (anchor) {
+    if (anchor && anchor.index >= 0) {
       const { start: sectionStart, length } = segments[anchor.index];
       window.scrollTo(0, trackTop + pinOffset + sectionStart + Math.min(anchor.local, length));
     }
     render();
   }
 
-  // Which section a scroll distance falls in, and how far into it.
+  // Which section a scroll distance falls in, and how far into it. Index -1 is the lead-in.
   function locate(progress) {
     let index = segments.length - 1;
     while (index > 0 && progress < segments[index].start) index--;
+    if (progress < segments[0].start) return { index: -1, local: 0 };
     const { start, length } = segments[index];
     return { index, local: Math.min(Math.max(progress - start, 0), length) };
   }
@@ -65,6 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function render() {
     frame = 0;
     const { index, local } = locate(window.scrollY - trackTop - pinOffset);
+    cue.classList.toggle('is-hidden', window.scrollY > 8);
+    if (index < 0) {
+      if (current !== -1) show(-1);
+      panel.classList.remove('has-above', 'has-more');
+      return;
+    }
     const { hold, overflow, length } = segments[index];
     const shift = Math.min(Math.max(local - hold * 0.3, 0), overflow);
 
@@ -73,12 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
     tabs[index].style.setProperty('--progress', (local / length).toFixed(4));
     panel.classList.toggle('has-above', shift > 1);
     panel.classList.toggle('has-more', shift < overflow - 1);
-    cue.classList.toggle('is-hidden', window.scrollY > 8);
   }
 
+  // index -1 shows no section and no active tab (the lead-in).
   function show(index) {
     current = index;
-    sections.forEach((section, i) => section.classList.toggle('visible', i === index));
+    sections.forEach((section, i) => {
+      section.classList.toggle('visible', i === index);
+      section.style.transform = '';
+    });
     tabs.forEach((tab, i) => {
       tab.classList.toggle('active', i === index);
       if (i === index) {
