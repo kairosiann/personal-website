@@ -1,0 +1,77 @@
+/* Shared chrome for the sub-pages, like the Bookshelf. Loaded after styles.css;
+   each page adds its own stylesheet after this one. */
+
+:root {
+  --ink: #000;
+  --muted: #555;
+  --rule: rgba(0, 0, 0, 0.14);
+  --paper: #f5f1e6;
+  --paper-deep: #e6dfca;
+  --tape: rgba(222, 205, 152, 0.62);
+  --serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Page chrome */
+.back-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--ink);
+}
+
+.back-link span {
+  display: inline-block;
+  transition: transform 160ms var(--ease-out);
+}
+
+.back-link:hover span {
+  transform: translateX(-2px);
+}
+
+.page-intro p {
+  margin-bottom: 14px;
+}
+
+.page-intro a {
+  color: var(--ink);
+}
+
+.page-foot {
+  margin-top: 56px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.page-foot a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.page-foot a:hover {
+  text-decoration: underline;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-link span {
+    transition-duration: 0ms;
+  }
+}
