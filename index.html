@@ -113,6 +113,22 @@
           <p>Please feel free to reach out at <a class="outbound-link" href="mailto:ryan.h.kim@yale.edu">ryan.h.kim@yale.edu</a>.</p>
           <!-- <p>My current primary pre-occupation is serving as a Military Police Officer (31B) with the US Eighth Army at USAG Humphreys. My other ongoing engagements are conducted in a part-time basis.</p> -->
 
+          <!-- Quote of the day: filled in by quote-of-the-day.js from quotes.json; this one shows if that fails to load. -->
+          <section class="quote" aria-label="Quote of the day">
+            <div class="quote-head">
+              <span class="quote-label">Quote of the day</span>
+              <time class="quote-clock"></time>
+            </div>
+            <p class="quote-text">&ldquo;No great thing is created suddenly.&rdquo;</p>
+            <p class="quote-source">&mdash; Epictetus, Discourses I.15</p>
+            <div class="quote-actions">
+              <button type="button" class="quote-action quote-shuffle" data-quote-shuffle hidden>
+                <svg class="quote-shuffle-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                Another quote
+              </button>
+              <a class="quote-action" href="#all-quotes" data-quotes-open>See all quotes</a>
+            </div>
+          </section>
         </header>
 
         <nav>
@@ -322,6 +338,21 @@
     </div>
   </div>
 
+  <!-- All quotes: a side drawer opened by "See all quotes" (and /#all-quotes); quotes-drawer.js fills the list. -->
+  <dialog class="quotes-drawer" id="all-quotes" aria-labelledby="quotes-drawer-title">
+    <div class="quotes-drawer-inner">
+      <div class="quotes-drawer-head">
+        <h2 id="quotes-drawer-title">All quotes <span class="quotes-drawer-count"></span></h2>
+        <button type="button" class="quotes-drawer-close" data-quotes-close aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <ol class="quotes-drawer-list" role="list"></ol>
+    </div>
+  </dialog>
+
+  <script src="quote-of-the-day.js"></script>
+  <script src="quotes-drawer.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
