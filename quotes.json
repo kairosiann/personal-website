@@ -1,6 +1,5 @@
 [
   { "text": "No great thing is created suddenly.", "who": "Epictetus", "src": "Discourses I.15" },
-  { "text": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", "who": "Will Durant", "src": "The Story of Philosophy, 1926 (summing up Aristotle so neatly that Aristotle usually gets the credit)" },
   { "text": "이봐, 해봤어?", "lang": "ko", "tr": "Hey, have you tried it?", "who": "Chung Ju-yung", "src": "Founder of Hyundai" },
   { "text": "Spend each day trying to be a little wiser than you were when you woke up.", "who": "Charlie Munger", "src": "USC Law commencement, 2007" },
   { "text": "What important truth do very few people agree with you on?", "who": "Peter Thiel", "src": "Zero to One, 2014" },
@@ -12,12 +11,9 @@
   { "text": "Who do we think we are to have these wild dreams?", "who": "Bill Gates", "src": "Source Code" },
   { "text": "Luck favors the prepared mind.", "who": "Louis Pasteur" },
   { "text": "We offer no explanation as to why these architectures seem to work; we attribute their success, as all else, to divine benevolence.", "who": "Noam Shazeer", "src": "GLU Variants Improve Transformer (the SwiGLU paper), 2020" },
-  { "text": "Remembering that you are going to die is the best way I know to avoid the trap of thinking you have something to lose. You are already naked. There is no reason not to follow your heart.", "who": "Steve Jobs", "src": "Stanford commencement address, 2005" },
   { "text": "I train like I’ve never won, and I compete like I’ve never lost.", "who": "Eileen Gu" },
   { "text": "I believe it is the duty of each of us to act as if the fate of the world depended on [them]. Admittedly, one [person] by [themself] cannot do the job. However, one [person] can make a difference… We must live for the future of the human race, not of our own comfort or success.", "who": "Hyman G. Rickover", "src": "U.S. Navy Admiral, “Father of the Nuclear Navy”" },
   { "text": "All our dreams can come true, if we have the courage to pursue them.", "who": "Walt Disney" },
   { "text": "The feeling of having finished something is an effective sleeping pill. A person who retires who feels he has done his bit will quickly wither away. A company which feels that it has reached its goal will quickly stagnate and lose its vitality. Happiness is not reaching your goal, it’s being on the way.", "who": "Ingvar Kamprad", "src": "Founder of IKEA" },
-  { "text": "Working hard is important, but there’s something that matters even more. Believing in yourself. Think of it this way: Every great wizard in history has started out as nothing more than we are now. Students.", "who": "Harry Potter", "src": "Harry Potter and the Order of the Phoenix" },
-  { "text": "You should take the approach that you’re wrong. Your goal is to be less wrong.", "who": "Elon Musk" },
-  { "text": "Intelligence is compression.", "who": "Ilya Sutskever" }
+  { "text": "Working hard is important, but there’s something that matters even more. Believing in yourself. Think of it this way: Every great wizard in history has started out as nothing more than we are now. Students.", "who": "Harry Potter", "src": "Harry Potter and the Order of the Phoenix" }
 ]
