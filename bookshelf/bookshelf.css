@@ -1,0 +1,381 @@
+/* Bookshelf. Loaded after /pages.css. */
+
+/* The intro's key to the black spines, set like one */
+.ink-key {
+  padding: 1px 5px;
+  color: #fff;
+  background: var(--ink);
+}
+
+.shelf {
+  margin-top: 36px;
+}
+
+.shelf:first-of-type {
+  margin-top: 8px;
+}
+
+/* One row per shelf: the standing books in a strip on the left and the pile on
+   the right, both on a 2px rule the same weight as the page's divider. */
+.shelf-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+
+/* The standing books. When they don't all fit, bookshelf.js pins the shelf and
+   slides this strip sideways as the page scrolls, the way the homepage steps
+   through its sections, fading whichever edge has more books past it. */
+.shelf-scroll {
+  --fade-left: 0px;
+  --fade-right: 0px;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade-left), #000 calc(100% - var(--fade-right)), transparent);
+}
+
+.shelf-scroll.has-before {
+  --fade-left: 28px;
+}
+
+.shelf-scroll.has-after {
+  --fade-right: 40px;
+}
+
+.shelf-books {
+  list-style: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  width: max-content;
+  height: 256px; /* the tallest spine, plus room to lift on hover */
+}
+
+.shelf-books > li {
+  display: flex;
+  align-items: flex-end;
+}
+
+.shelf.is-scrolling .shelf-pin {
+  position: sticky;
+  top: var(--stick, 16px);
+}
+
+.shelf.is-scrolling .shelf-books {
+  will-change: transform;
+}
+
+.spine {
+  writing-mode: vertical-rl;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  width: var(--w, 30px);
+  height: var(--h, 170px);
+  padding: 10px 0 8px;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-bottom: 0;
+  border-radius: 2px 2px 0 0;
+  transition: transform 180ms var(--ease-out);
+}
+
+a.spine:hover,
+a.spine:focus-visible,
+span.spine:hover {
+  transform: translateY(-8px);
+}
+
+a.spine:focus-visible,
+a.flat:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.spine-title {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.spine-title:lang(ko),
+.flat-title:lang(ko) {
+  font-family: 'AppleMyungjo', 'Nanum Myeongjo', var(--serif);
+}
+
+.spine-author,
+.flat-author {
+  flex: none;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spine--ink {
+  color: #fff;
+  background: var(--ink);
+}
+
+/* A thin bar between title and author */
+.spine-sep,
+.flat-sep {
+  flex: none;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.spine--ink .spine-author,
+.spine--ink .spine-sep,
+.flat--ink .flat-author,
+.flat--ink .flat-sep {
+  color: #aaa;
+}
+
+/* Two thin bands near the top and bottom, like a cloth-bound spine */
+.spine--band {
+  padding: 16px 0 14px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 0 7px / 100% 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 calc(100% - 7px) / 100% 1px no-repeat,
+    #fff;
+}
+
+/* Currently reading: a small pile lying flat at the end of the shelf, as wide as
+   its widest book (--pile); on a phone it narrows to leave the standing books room. */
+.stack {
+  flex: 0 1 var(--pile, 200px);
+  min-width: 0;
+  max-width: 56%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stack-label {
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.flat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  width: min(var(--w, 200px), 100%);
+  height: var(--t, 24px);
+  margin-top: -1.5px;
+  margin-right: var(--x, 0px);
+  padding: 0 9px;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  transition: transform 180ms var(--ease-out);
+}
+
+.flat:hover,
+.flat:focus-visible {
+  transform: translateX(-6px);
+}
+
+.flat--ink {
+  color: #fff;
+  background: var(--ink);
+}
+
+.flat-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.shelf-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.shelf-name {
+  flex: none;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.shelf-note {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* On a phone, a long count wraps under itself instead of being cut off, and the
+   pile drops its authors (tapping a book still names it) to keep titles whole. */
+@media (max-width: 480px) {
+  .shelf-note {
+    white-space: normal;
+    text-align: right;
+  }
+
+  .stack {
+    max-width: 56%;
+  }
+
+  .flat-sep,
+  .flat-author {
+    display: none;
+  }
+}
+
+/* ---------- Opening a book ----------
+   Clicking a spine pulls the book off the shelf and turns it to face you, like
+   Stripe Press. Each spine is the front of a 3D book; bookshelf.js adds a cover
+   folded back along its right edge. Opening turns the book a quarter turn about
+   that edge so the cover swings round to the front, while its slot widens from
+   the spine's thickness (--book-w) to the cover's width (--cover-w, or the
+   strip's width, --strip, if that's narrower) and the books beside it slide over. */
+.shelf-books > li.has-cover {
+  --turn-ease: cubic-bezier(0.65, 0, 0.25, 1);
+  --open-w: min(var(--cover-w), var(--strip, var(--cover-w)));
+  width: var(--book-w);
+  perspective: 900px;
+  transition: width 620ms var(--turn-ease);
+}
+
+.shelf-books > li.has-cover.is-open {
+  width: var(--open-w);
+}
+
+.has-cover > .spine {
+  position: relative;
+  flex: none;
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
+}
+
+/* Slow down only for the turn, so the hover lift stays quick */
+.shelf-books > li.is-turning > .spine {
+  transition: transform 620ms var(--turn-ease);
+}
+
+.shelf-books > li.is-open > .spine,
+.shelf-books > li.is-open > .spine:hover {
+  transform: translateX(calc(-1 * var(--book-w))) rotateY(-90deg);
+  cursor: pointer;
+}
+
+.cover {
+  position: absolute;
+  top: -1.5px;
+  left: 100%;
+  writing-mode: horizontal-tb;
+  display: flex;
+  flex-direction: column;
+  width: var(--open-w);
+  height: calc(100% + 1.5px);
+  padding: 18px 14px 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-bottom: 0;
+  transform-origin: 0 50%;
+  transform: rotateY(90deg);
+}
+
+/* The book's category, set small above the title like a series mark */
+.cover-tag {
+  margin-bottom: 8px;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.spine--ink .cover-tag {
+  color: #aaa;
+}
+
+.cover-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.cover-title:lang(ko) {
+  font-family: 'AppleMyungjo', 'Nanum Myeongjo', var(--serif);
+  word-break: keep-all;
+}
+
+.cover-author {
+  margin-top: auto;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spine--ink .cover {
+  color: #fff;
+  background: var(--ink);
+}
+
+.spine--ink .cover-author {
+  color: #aaa;
+}
+
+.spine--band .cover {
+  padding: 26px 14px 22px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 0 9px / 100% 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 calc(100% - 9px) / 100% 1px no-repeat,
+    #fff;
+}
+
+/* Keep the strip's edge fades off an open cover */
+.shelf-scroll:has(.is-open) {
+  --fade-left: 0px;
+  --fade-right: 0px;
+}
+
+/* While a book is open, the shelf label names it and links out */
+.shelf-note a {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spine,
+  .flat,
+  .shelf-books > li.has-cover,
+  .shelf-books > li.is-turning > .spine {
+    transition-duration: 0ms;
+  }
+}
