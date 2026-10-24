@@ -74,7 +74,11 @@
       translation.textContent = translationLine(q);
       textEl.append(translation);
     }
-    sourceEl.textContent = sourceLine(q);
+    // The name reads in black; the dash and the source stay grey.
+    const who = document.createElement('span');
+    who.className = 'quote-who';
+    who.textContent = q.who;
+    sourceEl.replaceChildren('— ', who, q.src ? `, ${q.src}` : '');
 
     if (animate && !reduceMotion.matches) {
       [textEl, sourceEl].forEach(el =>
