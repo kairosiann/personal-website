@@ -110,6 +110,13 @@ a.flat:focus-visible {
   line-height: 1;
 }
 
+/* A long title runs onto a second line, as it would on a thick book */
+.spine--wrap .spine-title {
+  white-space: normal;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
 .spine-title:lang(ko),
 .flat-title:lang(ko) {
   font-family: 'AppleMyungjo', 'Nanum Myeongjo', var(--serif);
