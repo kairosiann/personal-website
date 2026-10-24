@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookshelf — Ryan H. Kim</title>
+  <meta name="description" content="Ryan H. Kim's bookshelf: the fiction, biographies, economics and finance, history, and technology books that shaped how he thinks.">
+  <meta name="author" content="Ryan H. Kim">
+  <link rel="canonical" href="https://ryanhwangkim.com/bookshelf/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bookshelf — Ryan H. Kim">
+  <meta property="og:description" content="The books that shaped how I think.">
+  <meta property="og:url" content="https://ryanhwangkim.com/bookshelf/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/pages.css">
+  <link rel="stylesheet" href="/bookshelf/bookshelf.css">
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="/"><span aria-hidden="true">&larr;</span> Ryan H. Kim</a>
+
+    <header class="page-intro">
+      <h1>Bookshelf</h1>
+      <p>&ldquo;Life is too short to not read the very best book you know of right now.&rdquo; &mdash; Patrick Collison</p>
+      <p>Most recommended books <span class="ink-key">in black</span>. For a longer, unfiltered, less-aesthetic list, check out my <a class="outbound-link" href="https://www.goodreads.com/user/show/90382592-ryan">Goodreads</a>.</p>
+    </header>
+
+    <hr>
+
+    <main>
+      <!-- To add a book: copy a spine <li> onto a shelf. Books I'm reading go in the shelf's "Currently reading" stack as flat <a class="flat"> books.
+           data-tag is the book's category, shown as a #tag on its cover when it's opened.
+           --w is a spine's thickness, --h its height; --t is a flat book's thickness; a stack's --pile is its widest book.
+           A shelf whose books don't fit across pins in place and slides them sideways as you scroll. -->
+
+      <section class="shelf" id="biography-memoir" aria-labelledby="biography-memoir-name">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 38px; --h: 186px" href="https://www.goodreads.com/search?q=Steve+Jobs+Walter+Isaacson" data-tag="biography" data-caption="Steve Jobs · Walter Isaacson"><span class="spine-title">Steve Jobs</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Isaacson</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 39px; --h: 210px" href="https://www.goodreads.com/search?q=Elon+Musk+Walter+Isaacson" data-tag="biography" data-caption="Elon Musk · Walter Isaacson"><span class="spine-title">Elon Musk</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Isaacson</span></a></li>
+                <li><a class="spine spine--band" style="--w: 30px; --h: 226px" href="https://www.goodreads.com/search?q=Last+Man+Standing+Jamie+Dimon+Duff+McDonald" data-tag="biography" data-caption="Last Man Standing · Duff McDonald, on Jamie Dimon"><span class="spine-title">Last Man Standing</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">McDonald</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 29px; --h: 222px" href="https://www.goodreads.com/search?q=Educated+Tara+Westover" data-tag="biography" data-caption="Educated · Tara Westover"><span class="spine-title">Educated</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Westover</span></a></li>
+                <li><a class="spine" style="--w: 27px; --h: 188px" href="https://www.goodreads.com/search?q=Hillbilly+Elegy+J.D.+Vance" data-tag="biography" data-caption="Hillbilly Elegy · J.D. Vance"><span class="spine-title">Hillbilly Elegy</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Vance</span></a></li>
+                <li><a class="spine" style="--w: 31px; --h: 217px" href="https://www.goodreads.com/search?q=The+Infinity+Machine+Sebastian+Mallaby" data-tag="biography" data-caption="The Infinity Machine · Sebastian Mallaby"><span class="spine-title">The Infinity Machine</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Mallaby</span></a></li>
+                <li><a class="spine" style="--w: 27px; --h: 204px" href="https://www.goodreads.com/book/show/54814676" data-tag="biography" data-caption="Crying in H Mart · Michelle Zauner"><span class="spine-title">Crying in H Mart</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Zauner</span></a></li>
+                <li><a class="spine" style="--w: 24px; --h: 190px" href="https://www.goodreads.com/search?q=The+Prince+Niccol%C3%B2+Machiavelli" data-tag="biography" data-caption="The Prince · Niccolò Machiavelli"><span class="spine-title">The Prince</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Machiavelli</span></a></li>
+              </ul>
+            </div>
+            <div class="stack" style="--pile: 262px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 190px; --t: 27px; --x: 0px" href="https://www.goodreads.com/book/show/30659" data-tag="biography" data-caption="Meditations · Marcus Aurelius"><span class="flat-title">Meditations</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Aurelius</span></a>
+              <a class="flat" style="--w: 262px; --t: 23px; --x: 6px" href="https://www.goodreads.com/book/show/7696236" data-tag="biography" data-caption="시련은 있어도 실패는 없다 · Chung Ju-yung"><span class="flat-title" lang="ko">시련은 있어도 실패는 없다</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Chung</span></a>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="biography-memoir-name">Biography &amp; Memoir</h2>
+            <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="shelf" id="fiction" aria-labelledby="fiction-name">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 29px; --h: 204px" href="https://www.goodreads.com/search?q=1984+George+Orwell" data-tag="fiction" data-caption="1984 · George Orwell"><span class="spine-title">1984</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Orwell</span></a></li>
+                <li><a class="spine" style="--w: 28px; --h: 190px" href="https://www.goodreads.com/search?q=Brave+New+World+Aldous+Huxley" data-tag="fiction" data-caption="Brave New World · Aldous Huxley"><span class="spine-title">Brave New World</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Huxley</span></a></li>
+                <li><a class="spine spine--band" style="--w: 28px; --h: 216px" href="https://www.goodreads.com/search?q=The+Midnight+Library+Matt+Haig" data-tag="fiction" data-caption="The Midnight Library · Matt Haig"><span class="spine-title">The Midnight Library</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Haig</span></a></li>
+                <li><a class="spine" style="--w: 34px; --h: 198px" href="https://www.goodreads.com/search?q=Pachinko+Min+Jin+Lee" data-tag="fiction" data-caption="Pachinko · Min Jin Lee"><span class="spine-title">Pachinko</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Lee</span></a></li>
+                <li><a class="spine" style="--w: 23px; --h: 196px" href="https://www.goodreads.com/book/show/1772910" data-tag="fiction" data-caption="White Nights · Fyodor Dostoevsky"><span class="spine-title">White Nights</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Dostoevsky</span></a></li>
+                <li><a class="spine" style="--w: 31px; --h: 214px" href="https://www.goodreads.com/book/show/24885533" data-tag="fiction" data-caption="The Paper Menagerie and Other Stories · Ken Liu"><span class="spine-title">The Paper Menagerie</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Liu</span></a></li>
+                <li><a class="spine" style="--w: 24px; --h: 192px" href="https://www.goodreads.com/book/show/41804" data-tag="fiction" data-caption="I, Robot · Isaac Asimov"><span class="spine-title">I, Robot</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Asimov</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="fiction-name">Fiction &amp; Literature</h2>
+            <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="shelf" id="tech" aria-labelledby="tech-name">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 26px; --h: 188px" href="https://www.goodreads.com/search?q=Zero+to+One+Peter+Thiel" data-tag="tech" data-caption="Zero to One · Peter Thiel"><span class="spine-title">Zero to One</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Thiel</span></a></li>
+                <li><a class="spine" style="--w: 29px; --h: 237px" href="https://www.goodreads.com/search?q=The+Technological+Republic+Alexander+Karp" data-tag="tech" data-caption="The Technological Republic · Alexander C. Karp &amp; Nicholas W. Zamiska"><span class="spine-title">The Technological Republic</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Karp</span></a></li>
+                <li><a class="spine spine--band" style="--w: 28px; --h: 244px" href="https://www.goodreads.com/search?q=Secrets+of+Sand+Hill+Road+Scott+Kupor" data-tag="tech" data-caption="Secrets of Sand Hill Road · Scott Kupor"><span class="spine-title">Secrets of Sand Hill Road</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kupor</span></a></li>
+                <li><a class="spine" style="--w: 32px; --h: 222px" href="https://www.goodreads.com/book/show/218319936" data-tag="tech" data-caption="The Nvidia Way · Tae Kim"><span class="spine-title">The Nvidia Way</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kim</span></a></li>
+                <li><a class="spine" style="--w: 33px; --h: 214px" href="https://www.goodreads.com/book/show/60321447" data-tag="tech" data-caption="Chip War · Chris Miller"><span class="spine-title">Chip War</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Miller</span></a></li>
+                <li><a class="spine spine--wrap" style="--w: 31px; --h: 206px" href="https://www.goodreads.com/book/show/50489349" data-tag="tech" data-caption="The Alignment Problem · Brian Christian"><span class="spine-title">The Alignment Problem</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Christian</span></a></li>
+              </ul>
+            </div>
+            <div class="stack" style="--pile: 254px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 208px; --t: 28px; --x: 0px" href="https://www.goodreads.com/book/show/20527133" data-tag="tech" data-caption="Superintelligence · Nick Bostrom"><span class="flat-title">Superintelligence</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Bostrom</span></a>
+              <a class="flat" style="--w: 254px; --t: 24px; --x: 6px" href="https://www.goodreads.com/book/show/45024007" data-tag="tech" data-caption="The Singularity Is Nearer · Ray Kurzweil"><span class="flat-title">The Singularity Is Nearer</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Kurzweil</span></a>
+              <a class="flat" style="--w: 184px; --t: 25px; --x: -4px" href="https://www.goodreads.com/book/show/205397633" data-tag="tech" data-caption="Genesis · Eric Schmidt, Henry Kissinger &amp; Craig Mundie"><span class="flat-title">Genesis</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Schmidt</span></a>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="tech-name">Tech</h2>
+            <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="shelf" id="history" aria-labelledby="history-name">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine spine--ink" style="--w: 30px; --h: 206px" href="https://www.goodreads.com/search?q=On+Grand+Strategy+John+Lewis+Gaddis" data-tag="history" data-caption="On Grand Strategy · John Lewis Gaddis"><span class="spine-title">On Grand Strategy</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Gaddis</span></a></li>
+                <li><a class="spine" style="--w: 35px; --h: 210px" href="https://www.goodreads.com/search?q=Leadership+Six+Studies+in+World+Strategy+Henry+Kissinger" data-tag="history" data-caption="Leadership: Six Studies in World Strategy · Henry Kissinger"><span class="spine-title">Leadership</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kissinger</span></a></li>
+                <li><a class="spine spine--ink" style="--w: 33px; --h: 194px" href="https://www.goodreads.com/search?q=Sapiens+Yuval+Noah+Harari" data-tag="history" data-caption="Sapiens · Yuval Noah Harari"><span class="spine-title">Sapiens</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Harari</span></a></li>
+                <li><a class="spine" style="--w: 33px; --h: 208px" href="https://www.goodreads.com/book/show/204927599" data-tag="history" data-caption="Nexus · Yuval Noah Harari"><span class="spine-title">Nexus</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Harari</span></a></li>
+                <li><a class="spine" style="--w: 34px; --h: 234px" href="https://www.goodreads.com/search?q=Guns+Germs+and+Steel+Jared+Diamond" data-tag="history" data-caption="Guns, Germs, and Steel · Jared Diamond"><span class="spine-title">Guns, Germs, and Steel</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Diamond</span></a></li>
+                <li><a class="spine spine--wrap" style="--w: 40px; --h: 214px" href="https://www.goodreads.com/book/show/9704856" data-tag="history" data-caption="The Origins of Political Order · Francis Fukuyama"><span class="spine-title">The Origins of Political Order</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Fukuyama</span></a></li>
+                <li><a class="spine spine--wrap" style="--w: 42px; --h: 236px" href="https://www.goodreads.com/book/show/20575435" data-tag="history" data-caption="Political Order and Political Decay · Francis Fukuyama"><span class="spine-title">Political Order and Political Decay</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Fukuyama</span></a></li>
+              </ul>
+            </div>
+            <div class="stack" style="--pile: 300px">
+              <span class="stack-label">Currently reading</span>
+              <a class="flat" style="--w: 214px; --t: 26px; --x: 0px" href="https://www.goodreads.com/book/show/213395459" data-tag="history" data-caption="The Eurasian Century · Hal Brands"><span class="flat-title">The Eurasian Century</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Brands</span></a>
+              <a class="flat" style="--w: 300px; --t: 30px; --x: 6px" href="https://www.goodreads.com/book/show/242553456" data-tag="history" data-caption="The Return of the Great Powers · Brendan Simms"><span class="flat-title">The Return of the Great Powers</span><span class="flat-sep" aria-hidden="true">|</span><span class="flat-author">Simms</span></a>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="history-name">History</h2>
+            <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="shelf" id="econ-finance" aria-labelledby="econ-finance-name">
+        <div class="shelf-pin">
+          <div class="shelf-row">
+            <div class="shelf-scroll">
+              <ul class="shelf-books">
+                <li><a class="spine" style="--w: 33px; --h: 231px" href="https://www.goodreads.com/search?q=More+Money+Than+God+Sebastian+Mallaby" data-tag="finance" data-caption="More Money Than God · Sebastian Mallaby"><span class="spine-title">More Money Than God</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Mallaby</span></a></li>
+                <li><a class="spine" style="--w: 28px; --h: 214px" href="https://www.goodreads.com/search?q=One+Up+on+Wall+Street+Peter+Lynch" data-tag="finance" data-caption="One Up on Wall Street · Peter Lynch"><span class="spine-title">One Up on Wall Street</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Lynch</span></a></li>
+                <li><a class="spine" style="--w: 26px; --h: 240px" href="https://www.goodreads.com/book/show/41881472" data-tag="finance" data-caption="The Psychology of Money · Morgan Housel"><span class="spine-title">The Psychology of Money</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Housel</span></a></li>
+                <li><a class="spine spine--wrap" style="--w: 38px; --h: 204px" href="https://www.goodreads.com/book/show/11468377" data-tag="finance" data-caption="Thinking, Fast and Slow · Daniel Kahneman"><span class="spine-title">Thinking, Fast and Slow</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Kahneman</span></a></li>
+                <li><a class="spine" style="--w: 27px; --h: 200px" href="https://www.goodreads.com/book/show/3228917" data-tag="finance" data-caption="Outliers · Malcolm Gladwell"><span class="spine-title">Outliers</span><span class="spine-sep" aria-hidden="true">|</span><span class="spine-author">Gladwell</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="shelf-label">
+            <h2 class="shelf-name" id="econ-finance-name">Econ &amp; Finance</h2>
+            <p class="shelf-note"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/bookshelf/bookshelf.js"></script>
+</body>
+</html>

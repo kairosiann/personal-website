@@ -82,6 +82,26 @@ header a {
   }
 }
 
+/* Internal-page cue: the sibling of .outbound-link, pointing across rather than out. */
+.internal-link::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 0.3em;
+  font-weight: 400;
+  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.internal-link:hover::after,
+.internal-link:focus-visible::after {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .internal-link::after {
+    transition-duration: 0ms;
+  }
+}
+
 /* Navigation */
 nav {
   display: flex;
