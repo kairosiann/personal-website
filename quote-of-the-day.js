@@ -74,11 +74,7 @@
       translation.textContent = translationLine(q);
       textEl.append(translation);
     }
-    // The name reads in black; the dash and the source stay grey.
-    const who = document.createElement('span');
-    who.className = 'quote-who';
-    who.textContent = q.who;
-    sourceEl.replaceChildren('— ', who, q.src ? `, ${q.src}` : '');
+    sourceEl.textContent = sourceLine(q);
 
     if (animate && !reduceMotion.matches) {
       [textEl, sourceEl].forEach(el =>
@@ -88,7 +84,6 @@
   }
 
   // Dateline, e.g. "OCT 22nd 2026 | 07:00AM PT". Prefers the short generic zone
-  // name (PT, ET) and falls back to an offset (GMT+9) where there isn't one.
   const ordinal = n => {
     const suffixes = ['th', 'st', 'nd', 'rd'];
     const v = n % 100;

@@ -154,9 +154,6 @@ header {
   display: flow-root;
 }
 
-/* Quote of the day, after the Round 1 "A · Margin note" design: a heading in
-   Iowan Old Style over the visitor's live clock, the quote and links in Inter. */
-/* 18px below plus the tabs' own 10px gives the design's 28px gap */
 .quote {
   margin: 26px 0 18px;
   padding: 18px 0 6px;
@@ -164,102 +161,82 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.14);
 }
 
-/* On phones the clock wraps under the heading rather than squeezing it */
 .quote-head {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  column-gap: 16px;
+  gap: 16px;
   font-size: 11px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
   color: #555;
 }
 
 .quote-label {
-  white-space: nowrap;
   font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 14px;
-  color: #000;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
-/* The script writes the month in capitals; "24th" keeps its lowercase suffix */
 .quote-clock {
   letter-spacing: 0.04em;
-  text-transform: none;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .quote-text {
+  font-size: 15px;
   margin: 10px 0 0;
-  font-size: 14px;
-  line-height: 1.42;
-  hanging-punctuation: first;
 }
 
 .quote-text [lang="ko"] {
   word-break: keep-all;
 }
 
-.quote-translation {
-  color: #555;
+.quote-translation,
+.quote-source {
+  font-size: 14px;
+  color: #444;
 }
 
 .quote-source {
   margin: 8px 0 0;
-  font-size: 13px;
-  color: #555;
 }
 
-.quote-who {
-  color: #000;
-}
-
+/* Matches the 44px row the design gave these links, so the spacing below holds */
 .quote-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  min-height: 44px;
   margin-top: 6px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
-/* Text links in a 44px row, which doubles as their tap area */
+/* Small text links, with padding that widens the tap area without taking up space */
 .quote-action {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0;
+  margin: -6px 0;
+  padding: 6px 0;
   font: inherit;
-  font-size: 14px;
   color: #000;
+  opacity: 0.7;
   background: none;
   border: 0;
   text-decoration: none;
   cursor: pointer;
-  transition: color 160ms ease;
+  transition: opacity 150ms ease;
 }
 
 .quote-action[hidden] {
   display: none;
 }
 
-.quote-action:hover,
-.quote-action:focus-visible {
-  color: #444;
-}
-
-.quote-action:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.38);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* "Another quote" leads with a refresh circle that turns a half-step on hover */
+/* "Another quote" leads with a small refresh circle that turns a half-step on hover */
 .quote-shuffle {
-  gap: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .quote-shuffle-icon {
@@ -271,24 +248,23 @@ header {
   transform: rotate(180deg);
 }
 
-/* "See all quotes" points across to the drawer */
-.quote-all::after {
-  content: "\2192";
-  display: inline-block;
-  margin-left: 0.3em;
-  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1);
-}
-
-.quote-all:hover::after,
-.quote-all:focus-visible::after {
-  transform: translateX(2px);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .quote-shuffle-icon,
-  .quote-all::after {
+  .quote-shuffle-icon {
     transition: none;
   }
+}
+
+.quote-action:hover,
+.quote-action:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.quote-action:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.38);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Content sections */
