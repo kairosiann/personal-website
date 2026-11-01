@@ -434,8 +434,16 @@ html:has(.scrolly-on) {
   margin-top: 2px;
 }
 
-.entry-note {
-  font-weight: 700;
+.entry-detail a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.entry-subdetail {
+  font-size: 12px;
+  font-style: italic;
+  color: #444;
+  margin-top: 2px;
 }
 
 .subsection-title {
